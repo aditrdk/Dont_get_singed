@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WeaponScript : MonoBehaviour {
 
+	public GameObject holder;
 	public GameObject hand;
 	public int anglePercision = 10;
 	public float turnTorque = 80f;
@@ -16,60 +17,65 @@ public class WeaponScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-
+		_hingejoint = this.GetComponent<HingeJoint2D> ();
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (holder != null) {
+			if (_hingejoint.connectedBody == null) {
 
-		if (hand != null){
-			//Cache references to the hand and its rigidbody
-			hand_transform = hand.transform;
-			hand_rb = hand.GetComponent<Rigidbody2D>();
-			_hingejoint = this.GetComponent<HingeJoint2D> ();
-			_hingejoint.connectedBody = hand_rb;
-		
-			//Set parent of weapon to the hand holding it so that it's position is now relative to the hand
-			transform.parent = hand_transform;
+				//Physics.IgnoreCollision(collider, holder.GetComponent(collider));
+				hand = holder.transform.FindChild ("hand").gameObject;
 
-			//Direction you are trying to point the weapon in is based on position of the hand
-			pointDir = hand_transform.localPosition;
+				//Cache references to the hand and its rigidbody
+				hand_rb = hand.GetComponent<Rigidbody2D>();
+				hand_transform = hand.transform;
 
-			//Calculate the angle trying to point in
-			var targetAngle = Mathf.Atan2(pointDir.y, pointDir.x) * Mathf.Rad2Deg - 90;
+				//Set parent of weapon to the hand holding it so that it's position is now relative to the hand
+				transform.parent = hand_transform;
+
+				_hingejoint.connectedBody = hand_rb;
+			} 
+			else {
 
 
+				//Direction you are trying to point the weapon in is based on position of the hand
+				pointDir = hand_transform.localPosition;
 
-			//Convert angle to positive number 
-			if (targetAngle < 0)
-							targetAngle += 360;
+				//Calculate the angle trying to point in
+				var targetAngle = Mathf.Atan2 (pointDir.y, pointDir.x) * Mathf.Rad2Deg - 90;
 
-			Debug.Log (targetAngle);
 
-			//Unused, temporaily commented out in case needed
-			//q = Quaternion.AngleAxis(angle, Vector3.forward);
 
-			//Calculate the angle difference between the weapon now and its target angle
-			float angleDiff = targetAngle - transform.localEulerAngles.z;
+				//Convert angle to positive number 
+				if (targetAngle < 0)
+						targetAngle += 360;
 
-			//Convert the angle difference to the smaller angle between
-			if (angleDiff > 180)
-							angleDiff -= 360;
-			if (angleDiff < -180)
-							angleDiff += 360;
+				//Debug.Log (targetAngle);
 
-			//If the weapon is off from tis target by 'anglePercision' degrees, then apply torque
-			if (angleDiff > anglePercision) {
-				rigidbody2D.AddTorque (turnTorque * angleDiff / 360);
+				//Unused, temporaily commented out in case needed
+				//q = Quaternion.AngleAxis(angle, Vector3.forward);
 
-			} else if (angleDiff < -anglePercision) {
+				//Calculate the angle difference between the weapon now and its target angle
+				float angleDiff = targetAngle - transform.localEulerAngles.z;
 
-				rigidbody2D.AddTorque (turnTorque * angleDiff / 360);
+				//Convert the angle difference to the smaller angle between
+				if (angleDiff > 180)
+						angleDiff -= 360;
+				if (angleDiff < -180)
+						angleDiff += 360;
+
+				//If the weapon is off from tis target by 'anglePercision' degrees, then apply torque
+				if (angleDiff > anglePercision) {
+						rigidbody2D.AddTorque (turnTorque * angleDiff / 360);
+
+				} else if (angleDiff < -anglePercision) {
+						rigidbody2D.AddTorque (turnTorque * angleDiff / 360);
+				}
+
 			}
-
-		//rigidbody2D.transform.rotation = Quaternion.RotateTowards(transform.rotation, q, turnSpeed); 
 		}
 	}
 

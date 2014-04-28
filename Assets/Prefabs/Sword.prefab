@@ -15,7 +15,7 @@ GameObject:
   - 61: {fileID: 6100000}
   m_Layer: 0
   m_Name: Sword
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a2dda7e6607451991d46b572cd9cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holder: {fileID: 0}
   hand: {fileID: 0}
   anglePercision: 10
   turnTorque: 80

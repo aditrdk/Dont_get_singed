@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
+  - 58: {fileID: 5800000}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -42,7 +43,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 212: {fileID: 21200002}
-  - 114: {fileID: 11400002}
   - 50: {fileID: 5000002}
   m_Layer: 0
   m_Name: hand
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.56880903, y: -.0168241374, z: 0}
+  m_LocalPosition: {x: -.607865453, y: -.0168241374, z: 0}
   m_LocalScale: {x: .5, y: .5, z: 1}
   m_Children:
   - {fileID: 400002}
@@ -113,9 +113,20 @@ Rigidbody2D:
   m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 1
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!58 &5800000
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Radius: .400000006
+  m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,27 +140,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ControlInput: {fileID: 0}
   body: {fileID: 100002}
-  moveSpeed: 30
+  hand: {fileID: 100004}
+  moveSpeed: 18
   friction: .949999988
-  turnSpeed: 30
+  turnSpeed: 20
+  handradius: .699999988
+  angleRange: 75
+  reach: .400000006
   playerNum: 1
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1a0feb0142c4823becef8699fea93f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ControlInput: {fileID: 0}
-  radius: 1.39999998
-  minradius: .699999988
-  dampTime: .100000001
-  maxspeed: 20
-  playerNum: 0
+  dampTime: .00999999978
+  maxspeed: 25
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

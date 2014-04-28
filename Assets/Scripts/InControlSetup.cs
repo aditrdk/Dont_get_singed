@@ -19,6 +19,24 @@ public class InControlSetup : MonoBehaviour {
 
 	}
 
+	public bool boost(int playerNum){
+		if (playerNum > numDevices || playerNum < 1) {
+			return false;
+		}
+		
+		if (playerNum == 1) {
+			return player1.LeftTrigger.WasPressed;
+		} 
+		else if (playerNum == 2) {
+			return player2.LeftTrigger.WasPressed;
+		}
+		else{
+			return false;
+		}
+
+
+	}
+
 
 	public Vector2 getLsv(int playerNum){
 		if (playerNum > numDevices || playerNum < 1) {

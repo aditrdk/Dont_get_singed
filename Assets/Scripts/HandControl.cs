@@ -31,24 +31,26 @@ public class HandControl : MonoBehaviour {
 		rsv = controllerData.getRsv (playerNum);
 
 		Vector2 curPos = transform.localPosition;
-		Vector2 targetPos = radius * rsv;
 
+		float angle = Mathf.Atan2(rsv.x, rsv.y) * Mathf.Rad2Deg;
+		Debug.Log (angle);
+		/*
 		if (targetPos.magnitude < minradius) {
 			targetPos = lastPos;
 			targetPos.Normalize ();
 			targetPos *= minradius;
 		}
-
+		*/
 		//calculate run force and apply
-		float newX = Mathf.SmoothDamp(curPos.x,targetPos.x, ref xvel, dampTime, maxspeed);
-		float newY = Mathf.SmoothDamp(curPos.y,targetPos.y, ref yvel, dampTime, maxspeed);
-		Vector2 newPos = new Vector2 (newX, newY);
-
-
-		rigidbody2D.transform.localPosition = newPos;
-
-		//Trying to point in a new direction
-		if (curPos.magnitude > 0)
-						lastPos = curPos;
+//		float newX = Mathf.SmoothDamp(curPos.x,targetPos.x, ref xvel, dampTime, maxspeed);
+//		float newY = Mathf.SmoothDamp(curPos.y,targetPos.y, ref yvel, dampTime, maxspeed);
+//		Vector2 newPos = new Vector2 (newX, newY);
+//
+//
+//		rigidbody2D.transform.localPosition = newPos;
+//
+//		//Trying to point in a new direction
+//		if (curPos.magnitude > 0)
+//						lastPos = curPos;
 	}
 }
