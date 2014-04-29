@@ -25,6 +25,7 @@ public class InControlSetup : MonoBehaviour {
 		}
 		
 		if (playerNum == 1) {
+			Debug.Log (player1.LeftTrigger.WasPressed);
 			return player1.LeftTrigger.WasPressed;
 		} 
 		else if (playerNum == 2) {

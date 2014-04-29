@@ -35,6 +35,7 @@ public class MovementControl : MonoBehaviour {
 	public int boostCooldown = 30;
 	private int boostTimer = 0;
 	private bool canBoost = true;
+	public float boostAmt = 400;
 
 
 	// Use this for initialization
@@ -57,10 +58,10 @@ public class MovementControl : MonoBehaviour {
 		_rb.AddForce(runForce);
 
 		//get current velocity
-		var vel = rigidbody2D.velocity;
+		var vel = _rb.velocity;
 		vel.x *= friction; // modify x and y components
 		vel.y *= friction;
-		rigidbody2D.velocity = vel;
+		_rb.velocity = vel;
 
 		if (Mathf.Abs(vel.x) > 0 || Mathf.Abs (vel.y) > 0)
 						lookDir = vel;
@@ -119,8 +120,15 @@ public class MovementControl : MonoBehaviour {
 		//BOOST
 
 		if (canBoost && controllerData.getLeftTrigger(playerNum)) {
+			Debug.Log ("Boost");
 
-			//Boost code goes here!
+			Vector2 boostForce;
+			if(lsv.magnitude < .2){
+				boostForce = new Vector2(lookDir.normalized.x * boostAmt, lookDir.normalized.y * boostAmt);
+			}else{
+				boostForce = new Vector2(lsv.x * boostAmt, lsv.y * boostAmt);
+			}
+			_rb.velocity = boostForce;
 			canBoost = false;
 			boostTimer = 0;
 

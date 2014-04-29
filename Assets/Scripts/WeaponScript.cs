@@ -12,6 +12,7 @@ public class WeaponScript : MonoBehaviour {
 	private Rigidbody2D hand_rb;
 	private HingeJoint2D _hingejoint;
 	private Quaternion q;
+	private CircleCollider2D c_collider2d;
 
 
 
@@ -26,7 +27,10 @@ public class WeaponScript : MonoBehaviour {
 		if (holder != null) {
 			if (_hingejoint.connectedBody == null) {
 
-				//Physics.IgnoreCollision(collider, holder.GetComponent(collider));
+				//THIS IS THE PART THAT WE NEED TO FIGURE OUT TO DO COLLISION STUFFS
+				c_collider2d = holder.GetComponent<CircleCollider2D>();
+				//Physics.IgnoreCollision(collider, c_collider2d);
+
 				hand = holder.transform.FindChild ("hand").gameObject;
 
 				//Cache references to the hand and its rigidbody
@@ -79,6 +83,7 @@ public class WeaponScript : MonoBehaviour {
 		}
 	}
 
+	//What is this i dont even
 	void onCollisionEnter(Collision collision){
 		Debug.Log (collision.gameObject);
 		//q = rigidbody2D.transform.rotation;
