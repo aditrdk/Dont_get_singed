@@ -135,21 +135,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7208dbd018ec4f3dbce283f5ac707e5, type: 3}
+  m_Script: {fileID: 11500000, guid: 83187b63e54b04ac6a18782cad607c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ControlInput: {fileID: 0}
-  body: {fileID: 100002}
-  hand: {fileID: 100004}
-  moveSpeed: 18
-  friction: .949999988
-  turnSpeed: 20
-  handradius: .699999988
-  angleRange: 75
-  reach: .400000006
-  playerNum: 1
-  dampTime: .00999999978
-  maxspeed: 25
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -65,13 +65,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a2dda7e6607451991d46b572cd9cba, type: 3}
+  m_Script: {fileID: 11500000, guid: e38a70faa103c4d64b5ad5453613bca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holder: {fileID: 0}
-  hand: {fileID: 0}
-  anglePercision: 10
-  turnTorque: 80
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
