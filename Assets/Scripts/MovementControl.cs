@@ -111,29 +111,25 @@ public class MovementControl : MonoBehaviour {
 		float newHandY = Mathf.SmoothDamp(curHandPos.y, targetHandY, ref handYVel, dampTime, maxspeed);
 		Vector2 newHandPos = new Vector2 (newHandX, newHandY);
 
-
 		hand.transform.localPosition  = newHandPos;
-
-
 
 //
 //		float velocity.x - targetV_X)
 //		transform.Translate(moveX, moveY, 0);
-
-
-
 		//BOOST
 
-		if (canBoost && controllerData.getLeftTrigger (playerNum)) {
+		if (canBoost && controllerData.getLeftTrigger(playerNum)) {
 
+			//Boost code goes here!
+			canBoost = false;
+			boostTimer = 0;
 
-				} else {
-
-
-				}
-
-
-
+		} else if(!canBoost){
+			boostTimer ++;
+			if(boostTimer >= boostCooldown){
+				canBoost = true;
+			}
+		}
 	
 	}
 }

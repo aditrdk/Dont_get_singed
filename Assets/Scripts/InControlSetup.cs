@@ -19,7 +19,7 @@ public class InControlSetup : MonoBehaviour {
 
 	}
 
-	public bool boost(int playerNum){
+	public bool getLeftTrigger(int playerNum){
 		if (playerNum > numDevices || playerNum < 1) {
 			return false;
 		}
