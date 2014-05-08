@@ -7,6 +7,8 @@ public class InControlSetup : MonoBehaviour {
 
 	public InputDevice player1;
 	public InputDevice player2;
+	public InputDevice player3;
+	public InputDevice player4;
 	public int numDevices;
 
 
@@ -18,6 +20,13 @@ public class InControlSetup : MonoBehaviour {
 		//InputDevice device = NULL;
 
 	}
+	
+	public bool deviceConnected(int playerNum){
+		if (playerNum <= numDevices) return true;
+		else return false;
+	
+	
+	}
 
 	public bool getLeftTrigger(int playerNum){
 		if (playerNum > numDevices || playerNum < 1) {
@@ -25,11 +34,16 @@ public class InControlSetup : MonoBehaviour {
 		}
 		
 		if (playerNum == 1) {
-			Debug.Log (player1.LeftTrigger.WasPressed);
 			return player1.LeftTrigger.WasPressed;
 		} 
 		else if (playerNum == 2) {
 			return player2.LeftTrigger.WasPressed;
+		}
+		else if (playerNum == 3) {
+			return player3.LeftTrigger.WasPressed;
+		}
+		else if (playerNum == 4) {
+			return player4.LeftTrigger.WasPressed;
 		}
 		else{
 			return false;
@@ -37,6 +51,31 @@ public class InControlSetup : MonoBehaviour {
 
 
 	}
+	
+	public bool getAction4(int playerNum){
+		if (playerNum > numDevices || playerNum < 1) {
+			return false;
+		}
+		
+		if (playerNum == 1) {
+			return player1.Action4.WasPressed;
+		} 
+		else if (playerNum == 2) {
+			return player2.Action4.WasPressed;
+		}
+		else if (playerNum == 3) {
+			return player3.Action4.WasPressed;
+		}
+		else if (playerNum == 4) {
+			return player4.Action4.WasPressed;
+		}
+		else{
+			return false;
+		}
+		
+		
+	}
+	
 
 
 	public Vector2 getLsv(int playerNum){
@@ -49,6 +88,12 @@ public class InControlSetup : MonoBehaviour {
 		} 
 		else if (playerNum == 2) {
 			return player2.LeftStickVector;
+		}
+		else if (playerNum == 3) {
+			return player3.LeftStickVector;
+		}
+		else if (playerNum == 4) {
+			return player4.LeftStickVector;
 		}
 		else{
 			return player1.LeftStickVector;
@@ -68,6 +113,12 @@ public class InControlSetup : MonoBehaviour {
 		else if (playerNum == 2) {
 			return player2.RightStickVector;
 		}
+		else if (playerNum == 3) {
+			return player3.RightStickVector;
+		}
+		else if (playerNum == 4) {
+			return player4.RightStickVector;
+		}
 		else{
 			return player1.RightStickVector;
 		}
@@ -83,6 +134,9 @@ public class InControlSetup : MonoBehaviour {
 
 		if(numDevices>0) player1 = InputManager.Devices[0];
 		if(numDevices>1) player2 = InputManager.Devices[1];
+		if(numDevices>2) player3 = InputManager.Devices[2];
+		if(numDevices>3) player4 = InputManager.Devices[3];
+		
 
 		//lsv = player1.LeftStickVector;
 		//rsv = player1.RightStickVector;
