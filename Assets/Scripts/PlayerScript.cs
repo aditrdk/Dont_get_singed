@@ -15,6 +15,8 @@ public class PlayerScript : MonoBehaviour {
 	public int kills;
 	public int deaths;
 	
+	public int lifeSteal = 2;
+	
 	public GameObject body;
 	public bool dead;
 	public Sprite deadSprite;
@@ -72,6 +74,7 @@ public class PlayerScript : MonoBehaviour {
 	void playerDie(){
 	
 		lastAttacker.GetComponent<PlayerScript>().kills ++;
+		lastAttacker.GetComponent<PlayerScript>().health += lifeSteal;
 	
 		dead = true;
 		deaths++;
